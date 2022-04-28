@@ -1,0 +1,23 @@
+Nombre: César 
+Apellido: Caraballo
+Cédula: 4.442.556-1
+
+Detallar los pasos que utilizaría para:
+    En el caso de que se cree una nueva funcionalidad de parte de desarrollo (ejemplo desarrollo cambia el código)
+    y esto deberá ser finalmente desplegado en producción (por lo que deberá detallar los pasos que se siguen para lorgar este fin).
+
+En este caso usaría el esquema de GitFlow en donde desarrollo maneje su propia rama de desarrollo llamada "develop" que extiende de master (y esta a su vez de producción).
+En esta rama "develop" todas las nuevas features y fixes se hacen en ramas individuales que extienden de esta, una vez que el desarrollador termina su trabajo,
+hace el merge a develop mediante Pull Request para revisar que el código a introducir no genere conflictos con lo ya desarrollado y estable.
+
+Luego para pruebas tenemos una rama llamada "release" que extiende directamente de "develop" y que sirve para que el equipo de QA tenga un ambiente estable para testear
+las nuevas funcionalidades. Si las pruebas fallan se hacen los reportes y se solicita que sean arreglados en "develop" y luego se actualiza "release" con esos cambios.
+Se repieten pruebas hasta que estas pasen.
+
+Una vez que "release" da OK en sus pruebas queda pronta para ser mergeada a master (paso previo a producción), discontinuando el uso de "release".
+Por último este nuevo código queda habilitado para ser integrado a la rama productiva. No olvidar que al momento de discontinuar momentáneamente release se debe actualizar develop.
+
+Cuando hay "hotfixes" se debe extender de producción a una rama particular con un nombre representativo del fix, luego de terminado el trabajo,
+se debe mergear "realease" para sus pruebas, si estas, pasan sigue el flujo a master y producción, sino vuelve atrás hasta su resolución positiva.
+Cuando pasa esto es importante no perder la actualidad de "develop", es por esto que antes de introducir nuevas funcionalidades se deben traer (pull)
+los nuevos cambios de master para no trabajar con una versión antigua en "develop".
