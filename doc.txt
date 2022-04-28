@@ -1,0 +1,14 @@
+Nombre: César 
+Apellido: Caraballo
+Cédula: 4.442.556-1
+
+Esquema de ramas para proyecto de desarrollo, testing y despliegue de infraestrucutra como código.
+
+En mi caso usaría el esquema de GitHub Flow debido a que todos los archivos que conforman la infraestructura como código extenderán de la rama de producción
+y cada uno trabajará en su rama particular durante el desarrollo para luego pasar al testing individual de cada uno por separado.
+
+Si pasan las pruebas se debe hacer el merge a la rama master previo al pasaje a producción y hacer pruebas para que todo funcione en su conjunto.
+Luego mergear todo a la rama de producción.
+
+Si las pruebas individuales no pasan, los defectos deben ser resueltos en su correspondiente rama y luego pasar a master. 
+Si las pruebas integradas fallan, deben hacerse las correcciones pertinentes para luego ser desplegado en al rama productiva.
